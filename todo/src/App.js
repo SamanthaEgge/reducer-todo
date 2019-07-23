@@ -17,6 +17,11 @@ const App = () => {
     dispatch({ type: 'TOGGLE_TODO', payload: todoID })
   }
 
+  const clearCompleted = (event) => {
+    event.preventDefault();
+    dispatch({ type: 'CLEAR_COMPLETE' })
+  }
+
   return (
     <div className="app">
       <header className="app-header">
@@ -27,7 +32,8 @@ const App = () => {
           addTodo={addTodo} />
         <TodoList
           todos={state.todos}
-          toggleTodo={toggleTodo} />
+          toggleTodo={toggleTodo}
+          clearCompleted={clearCompleted} />
       </div>
     </div>
   );
