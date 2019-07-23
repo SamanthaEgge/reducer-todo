@@ -1,17 +1,17 @@
 export const initialState = {
   todos: [
     {
-      name: 'Complete portofolio',
+      todo: 'Complete portofolio',
       completed: false,
       id: 1
     },
     {
-      name: 'Learn to build node.js Server',
+      todo: 'Learn to build node.js Server',
       completed: false,
       id: 2
     },
     {
-      name: 'Up to date with career stuff',
+      todo: 'Up to date with career stuff',
       completed: false,
       id: 3
     }
@@ -20,6 +20,16 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case 'ADD_TODO':
+      const newTodo = {
+        todo: action.payload,
+        id: Date.now(),
+        purchased: false
+      }
+      return {
+        ...state,
+        todos: [...state.todos, newTodo]
+      }
     default:
       return state;
   }
