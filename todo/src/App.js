@@ -13,6 +13,10 @@ const App = () => {
     dispatch({ type: 'ADD_TODO', payload: todo })
   };
 
+  const toggleTodo = (todoID) => {
+    dispatch({ type: 'TOGGLE_TODO', payload: todoID })
+  }
+
   return (
     <div className="app">
       <header className="app-header">
@@ -22,7 +26,8 @@ const App = () => {
         <AddTodo 
           addTodo={addTodo} />
         <TodoList
-          todos={state.todos} />
+          todos={state.todos}
+          toggleTodo={toggleTodo} />
       </div>
     </div>
   );

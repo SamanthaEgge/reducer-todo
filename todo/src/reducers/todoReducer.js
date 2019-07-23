@@ -24,12 +24,25 @@ export const reducer = (state, action) => {
       const newTodo = {
         todo: action.payload,
         id: Date.now(),
-        purchased: false
+        completed: false
       }
       return {
         ...state,
         todos: [...state.todos, newTodo]
-      }
+      };
+    case 'TOGGLE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          if (action.payload === todo.id) {
+            return {
+              ...todo,
+              completed: !todo.completed
+            };
+          }
+          return todo;
+        })
+      };
     default:
       return state;
   }
